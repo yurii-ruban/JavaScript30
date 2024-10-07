@@ -25,17 +25,30 @@
       { text: 'Nice Nice Nice!', id: 542328 }
     ];
 
+    const CURRENT_YEAR = 2024;
+
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
     // Array.prototype.every() // is everyone 19 or older?
+
+    const someOld = people.some((person) => (CURRENT_YEAR - person.year) >= 19);
+    const everyOld = people.every((person) => (CURRENT_YEAR - person.year) >= 19);
+    console.log(`First: ${someOld}, ${everyOld}`);
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
 
+    const TARGET = 823423;
+    const elem823423 = comments.find((val) => val.id === TARGET);
+    console.table(elem823423);
+
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    const idx = comments.indexOf(elem823423); // Use previous element from find();
+    comments.splice(idx, 1);
+    console.table(comments);
 
   </script>
 </body>
