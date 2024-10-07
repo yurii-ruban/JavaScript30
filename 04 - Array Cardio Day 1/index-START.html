@@ -43,14 +43,7 @@
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-    const fstLst = inventors.map((inventor) => {
-      const shorthand = {
-        first: inventor.first,
-        last: inventor.last,
-      };
-
-      return shorthand;
-    })
+    const fstLst = inventors.map((inventor) => `${inventor.first} ${inventor.last}`);
     console.table(fstLst);
 
     // Array.prototype.sort()
@@ -89,21 +82,12 @@
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-    const visited = [];
-
-    data.forEach((val) => {
-      if (visited.indexOf(val) === -1) {
-        visited.push(val);
-      }
-    });
-
-    const result = [];
-    visited.forEach((val) => {
-      const pair = [val, data.filter((wehicle) => {
-        return wehicle === val;
-      }).length];
-      result.push(pair);
-    });
+    
+    const result = data.reduce((obj, item) => {
+      if (!(item in obj)) obj[item] = 0;
+      obj[item]++;
+      return obj;
+    }, {});
     console.table(result);
 
   </script>
